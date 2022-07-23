@@ -9,8 +9,8 @@ from collections import defaultdict, Counter
 from src.chunk_utils import chunks, get_num_chunks, get_pattern
 
 N_GUESSES = 10
-DICT_FILE_all = 'all_words.txt'
-DICT_FILE = 'words.txt'
+DICT_FILE_all = 'dungleon_guesses.txt'
+DICT_FILE = 'dungleon_solutions.txt'
 SAVE_TIME = False
 
 def calculate_pattern(guess, true):
