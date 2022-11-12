@@ -106,10 +106,10 @@ def main():
     error_msg = "Dictionary contains different length words."
     assert len({len(x) for x in all_dictionary}) == 1, error_msg
     print(f"Loaded dictionary with {len(all_dictionary)} words...")
-    WORD_LEN = len(all_dictionary[0])  # 5-letters
+    word_len = len(all_dictionary[0])  # 5-letters
 
     # Generate the possible patterns of information we can get
-    all_patterns = list(itertools.product([0, 1, 2], repeat=WORD_LEN))
+    all_patterns = list(itertools.product([0, 1, 2], repeat=word_len))
 
     num_chunks = get_num_chunks(all_dictionary)
     for chunk_no, dictionary_chunk in enumerate(chunks(all_dictionary), start=1):
@@ -123,12 +123,12 @@ def main():
     # Simulate games
     defaultdict(list)
 
-    for WORD_TO_GUESS in tqdm(dictionary):
+    for word_to_guess in tqdm(dictionary):
 
         if SAVE_TIME:
             guess_word = "tares"
             all_words = set(all_dictionary)
-            info = calculate_pattern(guess_word, WORD_TO_GUESS)
+            info = calculate_pattern(guess_word, word_to_guess)
             words = get_pattern(all_dictionary, guess_word)[info]
             all_words = all_words.intersection(words)
             init_round = 1
@@ -154,12 +154,12 @@ def main():
 
             # Guess the candiate with highest entropy
             guess_word = max(entropies.items(), key=lambda x: x[1])[0]
-            info = calculate_pattern(guess_word, WORD_TO_GUESS)
+            info = calculate_pattern(guess_word, word_to_guess)
 
             # Print round information
             print("Guessing:     ", guess_word)
             print("Info:         ", info)
-            if guess_word == WORD_TO_GUESS:
+            if guess_word == word_to_guess:
                 print(f"WIN IN {n_round + 1} GUESSES!\n\n\n")
                 break
 
