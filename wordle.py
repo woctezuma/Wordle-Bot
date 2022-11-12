@@ -1,6 +1,4 @@
-#!/usr/bin/python
 import os
-from collections import defaultdict
 
 from tqdm import tqdm
 
@@ -38,7 +36,6 @@ def main():
             save_pattern_dict(pattern_dict, chunk_no)
 
     # Simulate games
-    defaultdict(list)
     precomputed_first_guess = "tares"
 
     for word_to_guess in tqdm(dictionary):
