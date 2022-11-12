@@ -12,8 +12,9 @@ from src.pattern_utils import calculate_pattern, generate_pattern_dict
 
 N_GUESSES = 10
 DATA_FOLDER = "data/"
-DICT_FILE_ALL = f"{DATA_FOLDER}dungleon_guesses.txt"
-DICT_FILE = f"{DATA_FOLDER}dungleon_solutions.txt"
+GAME_FOLDER = "dungleon/"
+DICT_FILE_ALL = f"{DATA_FOLDER}{GAME_FOLDER}guesses.txt"
+DICT_FILE = f"{DATA_FOLDER}{GAME_FOLDER}solutions.txt"
 SAVE_TIME = False
 
 
