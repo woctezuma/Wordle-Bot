@@ -12,7 +12,7 @@ from src.entropy_utils import calculate_entropies_in_chunks
 from src.pattern_utils import generate_pattern_dict
 from src.utils import update_possible_words
 
-N_GUESSES = 10
+N_GUESSES = 6
 DATA_FOLDER = "data/"
 GAME_FOLDER = "dungleon/"
 DICT_FILE_ALL = f"{DATA_FOLDER}{GAME_FOLDER}guesses.txt"
