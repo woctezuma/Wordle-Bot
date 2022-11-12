@@ -10,8 +10,9 @@ from src.chunk_utils import chunks, get_num_chunks, get_pattern
 from src.disk_utils import get_pattern_dict_fname, load_pattern_dict, save_pattern_dict
 
 N_GUESSES = 10
-DICT_FILE_ALL = "dungleon_guesses.txt"
-DICT_FILE = "dungleon_solutions.txt"
+DATA_FOLDER = "data/"
+DICT_FILE_ALL = f"{DATA_FOLDER}dungleon_guesses.txt"
+DICT_FILE = f"{DATA_FOLDER}dungleon_solutions.txt"
 SAVE_TIME = False
 
 
