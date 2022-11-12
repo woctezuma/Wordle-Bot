@@ -96,11 +96,11 @@ def calculate_entropies_in_chunks(
 
 def main():
     # load all 5-letter-words for making patterns
-    with open(DICT_FILE_all) as ifp:
+    with open(DICT_FILE_all, encoding="utf8") as ifp:
         all_dictionary = list(map(lambda x: x.strip(), ifp.readlines()))
 
     # Load 2315 words for solutions
-    with open(DICT_FILE) as ifp:
+    with open(DICT_FILE, encoding="utf8") as ifp:
         dictionary = list(map(lambda x: x.strip(), ifp.readlines()))
 
     error_msg = "Dictionary contains different length words."
