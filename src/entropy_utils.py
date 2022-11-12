@@ -11,8 +11,8 @@ def calculate_entropies(words, possible_words, pattern_dict, all_patterns):
         counts = []
         for pattern in all_patterns:
             matches = pattern_dict[word][pattern]
-            matches = matches.intersection(possible_words)
-            counts.append(len(matches))
+            num_matches = len(matches.intersection(possible_words))
+            counts.append(num_matches)
         entropies[word] = entropy(counts)
     return entropies
 
