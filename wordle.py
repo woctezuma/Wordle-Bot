@@ -30,10 +30,10 @@ def calculate_pattern(guess, true):
     counts = Counter(true[i] for i in wrong)
     pattern = [2] * 5
     for i in wrong:
-        v = guess[i]
-        if counts[v] > 0:
+        letter = guess[i]
+        if counts[letter] > 0:
             pattern[i] = 1
-            counts[v] -= 1
+            counts[letter] -= 1
         else:
             pattern[i] = 0
     return tuple(pattern)
