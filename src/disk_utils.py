@@ -10,8 +10,7 @@ def get_pattern_dict_fname(chunk_no=None):
 
 
 def load_pattern_dict(chunk_no=None):
-    """Load the cache.
-    """
+    """Load the cache."""
     fname = get_pattern_dict_fname(chunk_no)
     return pickle.load(open(fname, 'rb'))
 

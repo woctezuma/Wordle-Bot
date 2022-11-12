@@ -8,7 +8,7 @@ def chunks(lst, n=CHUNK_SIZE):
     Reference: https://stackoverflow.com/a/312464/376454
     """
     for i in range(0, len(lst), n):
-        yield lst[i: i + n]
+        yield lst[i : i + n]
 
 
 def get_num_chunks(lst):

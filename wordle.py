@@ -70,7 +70,9 @@ def calculate_entropies(words, possible_words, pattern_dict, all_patterns):
     return entropies
 
 
-def calculate_entropies_in_chunks(all_words, all_patterns, num_chunks, filter_candidates=False):
+def calculate_entropies_in_chunks(
+    all_words, all_patterns, num_chunks, filter_candidates=False
+):
     entropies = {}
     for chunk_no in range(1, num_chunks + 1):
         pattern_dict = load_pattern_dict(chunk_no)
@@ -78,7 +80,9 @@ def calculate_entropies_in_chunks(all_words, all_patterns, num_chunks, filter_ca
         candidates = list(pattern_dict.keys())
         if filter_candidates:
             candidates = list(set(candidates).intersection(all_words))
-        chunk_entropies = calculate_entropies(candidates, all_words, pattern_dict, all_patterns)
+        chunk_entropies = calculate_entropies(
+            candidates, all_words, pattern_dict, all_patterns
+        )
         entropies.update(chunk_entropies)
 
     return entropies
@@ -127,10 +131,14 @@ def main():
             init_round = 0
 
         for n_round in range(init_round, N_GUESSES):
-            entropies = calculate_entropies_in_chunks(all_words, all_patterns, num_chunks, filter_candidates=True)
+            entropies = calculate_entropies_in_chunks(
+                all_words, all_patterns, num_chunks, filter_candidates=True
+            )
 
             if max(entropies.values()) < 0.1:
-                entropies = calculate_entropies_in_chunks(all_words, all_patterns, num_chunks, filter_candidates=False)
+                entropies = calculate_entropies_in_chunks(
+                    all_words, all_patterns, num_chunks, filter_candidates=False
+                )
 
             # Guess the candiate with highest entropy
             guess_word = max(entropies.items(), key=lambda x: x[1])[0]
