@@ -1,12 +1,14 @@
 #!/usr/bin/python
-import os
 import itertools
+import os
 import random
-from src.disk_utils import get_pattern_dict_fname, load_pattern_dict, save_pattern_dict
-from tqdm import tqdm
+from collections import Counter, defaultdict
+
 from scipy.stats import entropy
-from collections import defaultdict, Counter
+from tqdm import tqdm
+
 from src.chunk_utils import chunks, get_num_chunks, get_pattern
+from src.disk_utils import get_pattern_dict_fname, load_pattern_dict, save_pattern_dict
 
 N_GUESSES = 10
 DICT_FILE_all = 'dungleon_guesses.txt'
