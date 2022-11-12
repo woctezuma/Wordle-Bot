@@ -1,33 +1,40 @@
-# Wordle-Bot
-An entropy-based strategy to wordle
+# Wordle Bot [![Code Quality][codacy-image]][codacy]
 
+This repository contains Python code to solve Wordle puzzles by maximizing entropy.
 
-Inspired by [3Blue1Brown](https://www.youtube.com/watch?v=v68zYyaEmEA)
+## Requirements
 
-## Install & Run
+-   Install the latest version of [Python 3.X][python-download-url].
+-   Install the required packages:
 
-1. Clone the script:
 ```bash
-git clone https://github.com/GillesVandewiele/Wordle-Bot.git
+pip install -r requirements.txt
 ```
 
-2. Install tqdm and scipy
-```bash
-(python -m) pip install tqdm scipy
-```
+## Usage
 
-3. Run the script (it will generate 10 random words and apply the strategy)
 ```bash
 python wordle.py
 ```
 
-## Example
+## References
 
-![Interactive](img/wordle_interactive.png)
+- 3Blue1Brown, [*Solving Wordle using information theory*][youtube-video], posted on Youtube on February 6, 2022,
+- [`3b1b/videos`][youtube-supplementary-code]: supplementary code (in Python) accompanying the aforementioned video,
+- [`GillesVandewiele/Wordle-Bot`][wordle-bot-python]: a solver (in Python) inspired by the video,
+- [`TylerGlaiel/wordlebot`][wordle-bot-cpp]: a solver (in C++) which uses other approaches,
+- [`woctezuma/dungleon-bot`][dungleon-bot]: the application of different solvers to [Dungleon][dungleon-rules].
 
-![Example of execution](img/wordle_bot.png)
+<!-- Definitions -->
 
-## Statistics
+[codacy]: <https://www.codacy.com/gh/woctezuma/Wordle-Bot>
+[codacy-image]: <https://api.codacy.com/project/badge/Grade/db464b0064aa4bde8ea084bc80f09dcf>
 
-I let the bot guess all the words in our word-list and generated a histogram of the required guesses. Can you do better?
-![Statistics](img/wordle_stats_final.png)
+[python-download-url]: <https://www.python.org/downloads/>
+
+[youtube-video]: <https://www.youtube.com/watch?v=v68zYyaEmEA>
+[youtube-supplementary-code]: <https://github.com/3b1b/videos/tree/master/_2022/wordle>
+[wordle-bot-python]: <https://github.com/GillesVandewiele/Wordle-Bot>
+[wordle-bot-cpp]: <https://github.com/TylerGlaiel/wordlebot>
+[dungleon-bot]: <https://github.com/woctezuma/dungleon-bot>
+[dungleon-rules]: <https://github.com/woctezuma/dungleon/wiki/Rules>
