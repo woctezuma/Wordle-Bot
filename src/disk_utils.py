@@ -21,3 +21,9 @@ def save_pattern_dict(pattern_dict, chunk_no=None):
     fname = get_pattern_dict_fname(chunk_no)
     with open(fname, "wb+") as file:
         pickle.dump(pattern_dict, file)
+
+
+def load_word_dictionary(fname):
+    with open(fname, encoding="utf8") as ifp:
+        dictionary = list(map(lambda x: x.strip(), ifp.readlines()))
+    return dictionary

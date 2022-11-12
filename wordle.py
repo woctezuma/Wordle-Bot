@@ -5,7 +5,11 @@ from collections import defaultdict
 from tqdm import tqdm
 
 from src.chunk_utils import chunks, get_num_chunks, get_pattern
-from src.disk_utils import get_pattern_dict_fname, save_pattern_dict
+from src.disk_utils import (
+    get_pattern_dict_fname,
+    load_word_dictionary,
+    save_pattern_dict,
+)
 from src.entropy_utils import calculate_entropies_in_chunks
 from src.pattern_utils import calculate_pattern, generate_pattern_dict
 
@@ -19,12 +23,10 @@ SAVE_TIME = False
 
 def main():
     # load all 5-letter-words for making patterns
-    with open(DICT_FILE_ALL, encoding="utf8") as ifp:
-        all_dictionary = list(map(lambda x: x.strip(), ifp.readlines()))
+    all_dictionary = load_word_dictionary(DICT_FILE_ALL)
 
     # Load 2315 words for solutions
-    with open(DICT_FILE, encoding="utf8") as ifp:
-        dictionary = list(map(lambda x: x.strip(), ifp.readlines()))
+    dictionary = load_word_dictionary(DICT_FILE)
 
     error_msg = "Dictionary contains different length words."
     assert len({len(x) for x in all_dictionary}) == 1, error_msg
