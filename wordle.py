@@ -10,7 +10,7 @@ from src.chunk_utils import chunks, get_num_chunks, get_pattern
 from src.disk_utils import get_pattern_dict_fname, load_pattern_dict, save_pattern_dict
 
 N_GUESSES = 10
-DICT_FILE_all = "dungleon_guesses.txt"
+DICT_FILE_ALL = "dungleon_guesses.txt"
 DICT_FILE = "dungleon_solutions.txt"
 SAVE_TIME = False
 
@@ -96,7 +96,7 @@ def calculate_entropies_in_chunks(
 
 def main():
     # load all 5-letter-words for making patterns
-    with open(DICT_FILE_all, encoding="utf8") as ifp:
+    with open(DICT_FILE_ALL, encoding="utf8") as ifp:
         all_dictionary = list(map(lambda x: x.strip(), ifp.readlines()))
 
     # Load 2315 words for solutions
