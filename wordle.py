@@ -14,6 +14,7 @@ DICT_FILE_all = 'dungleon_guesses.txt'
 DICT_FILE = 'dungleon_solutions.txt'
 SAVE_TIME = False
 
+
 def calculate_pattern(guess, true):
     """Generate a pattern list that Wordle would return if you guessed
     `guess` and the true word is `true`
@@ -69,7 +70,7 @@ def calculate_entropies(words, possible_words, pattern_dict, all_patterns):
     return entropies
 
 
-def calculate_entropies_in_chunks(all_words, all_patterns, num_chunks, filter_candidates = False):
+def calculate_entropies_in_chunks(all_words, all_patterns, num_chunks, filter_candidates=False):
     entropies = {}
     for chunk_no in range(1, num_chunks + 1):
         pattern_dict = load_pattern_dict(chunk_no)
@@ -95,7 +96,7 @@ def main():
     error_msg = 'Dictionary contains different length words.'
     assert len({len(x) for x in all_dictionary}) == 1, error_msg
     print(f'Loaded dictionary with {len(all_dictionary)} words...')
-    WORD_LEN = len(all_dictionary[0]) # 5-letters
+    WORD_LEN = len(all_dictionary[0])  # 5-letters
 
     # Generate the possible patterns of information we can get
     all_patterns = list(itertools.product([0, 1, 2], repeat=WORD_LEN))
@@ -145,6 +146,7 @@ def main():
             # Filter our list of remaining possible words
             words = get_pattern(all_dictionary, guess_word)[info]
             all_words = all_words.intersection(words)
+
 
 if __name__ == "__main__":
     main()
