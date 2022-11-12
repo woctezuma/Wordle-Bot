@@ -1,3 +1,5 @@
+import itertools
+
 from src.chunk_utils import get_pattern
 from src.pattern_utils import calculate_pattern
 
@@ -21,3 +23,10 @@ def update_possible_words(
     all_words = all_words.intersection(words)
 
     return all_words
+
+
+def get_all_patterns(word_len):
+    # Generate the possible patterns of information we can get
+    all_patterns = list(itertools.product([0, 1, 2], repeat=word_len))
+
+    return all_patterns
