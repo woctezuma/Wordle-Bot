@@ -18,7 +18,6 @@ DATA_FOLDER = "data/"
 GAME_FOLDER = "dungleon/"
 DICT_FILE_ALL = f"{DATA_FOLDER}{GAME_FOLDER}guesses.txt"
 DICT_FILE = f"{DATA_FOLDER}{GAME_FOLDER}solutions.txt"
-SAVE_TIME = False
 
 
 def main():
@@ -43,18 +42,18 @@ def main():
 
     # Simulate games
     defaultdict(list)
+    precomputed_first_guess = "tares"
 
     for word_to_guess in tqdm(dictionary):
 
-        if SAVE_TIME:
-            guess_word = "tares"
-            all_words = set(all_dictionary)
-            info = calculate_pattern(guess_word, word_to_guess)
-            words = get_pattern(all_dictionary, guess_word)[info]
+        all_words = set(all_dictionary)
+
+        if precomputed_first_guess is not None:
+            info = calculate_pattern(precomputed_first_guess, word_to_guess)
+            words = get_pattern(all_dictionary, precomputed_first_guess)[info]
             all_words = all_words.intersection(words)
             init_round = 1
         else:
-            all_words = set(all_dictionary)
             init_round = 0
 
         for n_round in range(init_round, N_GUESSES):
