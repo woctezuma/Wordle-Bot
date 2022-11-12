@@ -17,5 +17,6 @@ def load_pattern_dict(chunk_no=None):
 
 def save_pattern_dict(pattern_dict, chunk_no=None):
     fname = get_pattern_dict_fname(chunk_no)
-    pickle.dump(pattern_dict, open(fname, "wb+"))
+    with open(fname, "wb+") as f:
+        pickle.dump(pattern_dict, f)
     return
