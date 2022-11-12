@@ -25,6 +25,11 @@ def update_possible_words(
     return all_words
 
 
+def draw_sample(iterable):
+    # Reference: https://stackoverflow.com/a/59841/376454
+    return next(iter(iterable))
+
+
 def get_all_patterns(word_len):
     # Generate the possible patterns of information we can get
     all_patterns = list(itertools.product([0, 1, 2], repeat=word_len))
