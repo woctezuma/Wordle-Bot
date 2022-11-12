@@ -85,7 +85,7 @@ def calculate_entropies_in_chunks(all_words, all_patterns, num_chunks, filter_ca
 
 
 def main():
-    # load all 5-letter-words for making patterns 
+    # load all 5-letter-words for making patterns
     with open(DICT_FILE_all) as ifp:
         all_dictionary = list(map(lambda x: x.strip(), ifp.readlines()))
 
@@ -96,7 +96,7 @@ def main():
     error_msg = 'Dictionary contains different length words.'
     assert len({len(x) for x in all_dictionary}) == 1, error_msg
     print(f'Loaded dictionary with {len(all_dictionary)} words...')
-    WORD_LEN = len(all_dictionary[0]) # 5-letters 
+    WORD_LEN = len(all_dictionary[0]) # 5-letters
 
     # Generate the possible patterns of information we can get
     all_patterns = list(itertools.product([0, 1, 2], repeat=WORD_LEN))

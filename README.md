@@ -6,7 +6,7 @@ Inspired by [3Blue1Brown](https://www.youtube.com/watch?v=v68zYyaEmEA)
 
 ## Install & Run
 
-1. Clone the script: 
+1. Clone the script:
 ```bash
 git clone https://github.com/GillesVandewiele/Wordle-Bot.git
 ```
