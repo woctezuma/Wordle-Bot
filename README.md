@@ -13,6 +13,16 @@ pip install -r requirements.txt
 
 ## Usage
 
+Choose the game by editing `GAME_FOLDER` in `wordle.py`:
+- either `wordle/`,
+- or `dungleon/`.
+
+Specify a pre-computed first guess by editing `FIRST_GUESS` in `wordle.py`:
+- choose `None` to re-compute the first guess,
+- or directly use `"tares"` for Wordle.
+
+Finally, run:
+
 ```bash
 python wordle.py
 ```
