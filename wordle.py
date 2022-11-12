@@ -10,8 +10,8 @@ from src.chunk_utils import chunks, get_num_chunks, get_pattern
 from src.disk_utils import get_pattern_dict_fname, load_pattern_dict, save_pattern_dict
 
 N_GUESSES = 10
-DICT_FILE_all = 'dungleon_guesses.txt'
-DICT_FILE = 'dungleon_solutions.txt'
+DICT_FILE_all = "dungleon_guesses.txt"
+DICT_FILE = "dungleon_solutions.txt"
 SAVE_TIME = False
 
 
@@ -97,9 +97,9 @@ def main():
     with open(DICT_FILE) as ifp:
         dictionary = list(map(lambda x: x.strip(), ifp.readlines()))
 
-    error_msg = 'Dictionary contains different length words.'
+    error_msg = "Dictionary contains different length words."
     assert len({len(x) for x in all_dictionary}) == 1, error_msg
-    print(f'Loaded dictionary with {len(all_dictionary)} words...')
+    print(f"Loaded dictionary with {len(all_dictionary)} words...")
     WORD_LEN = len(all_dictionary[0])  # 5-letters
 
     # Generate the possible patterns of information we can get
@@ -108,7 +108,7 @@ def main():
     num_chunks = get_num_chunks(all_dictionary)
     for chunk_no, dictionary_chunk in enumerate(chunks(all_dictionary), start=1):
         fname = get_pattern_dict_fname(chunk_no)
-        print(f'[{chunk_no}/{num_chunks}] Processing {fname}')
+        print(f"[{chunk_no}/{num_chunks}] Processing {fname}")
         if not os.path.exists(fname):
             # Calculate the pattern_dict and cache it
             pattern_dict = generate_pattern_dict(dictionary_chunk)
@@ -120,7 +120,7 @@ def main():
     for WORD_TO_GUESS in tqdm(dictionary):
 
         if SAVE_TIME:
-            guess_word = 'tares'
+            guess_word = "tares"
             all_words = set(all_dictionary)
             info = calculate_pattern(guess_word, WORD_TO_GUESS)
             words = get_pattern(all_dictionary, guess_word)[info]
@@ -145,10 +145,10 @@ def main():
             info = calculate_pattern(guess_word, WORD_TO_GUESS)
 
             # Print round information
-            print('Guessing:     ', guess_word)
-            print('Info:         ', info)
+            print("Guessing:     ", guess_word)
+            print("Info:         ", info)
             if guess_word == WORD_TO_GUESS:
-                print(f'WIN IN {n_round + 1} GUESSES!\n\n\n')
+                print(f"WIN IN {n_round + 1} GUESSES!\n\n\n")
                 break
 
             # Filter our list of remaining possible words
