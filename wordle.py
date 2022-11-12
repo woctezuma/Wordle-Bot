@@ -1,7 +1,6 @@
 #!/usr/bin/python
 import itertools
 import os
-import random
 from collections import Counter, defaultdict
 
 from scipy.stats import entropy
@@ -111,7 +110,7 @@ def main():
             save_pattern_dict(pattern_dict, chunk_no)
 
     # Simulate games
-    stats = defaultdict(list)
+    defaultdict(list)
 
     for WORD_TO_GUESS in tqdm(dictionary):
 
