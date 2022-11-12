@@ -17,6 +17,9 @@ pip install -r requirements.txt
 python wordle.py
 ```
 
+Alternatively, run [`wordle-bot.ipynb`][colab-notebook]
+[![Open In Colab][colab-badge]][colab-notebook]
+
 ## References
 
 - 3Blue1Brown, [*Solving Wordle using information theory*][youtube-video], posted on Youtube on February 6, 2022,
@@ -31,6 +34,8 @@ python wordle.py
 [codacy-image]: <https://api.codacy.com/project/badge/Grade/db464b0064aa4bde8ea084bc80f09dcf>
 
 [python-download-url]: <https://www.python.org/downloads/>
+[colab-notebook]: <https://colab.research.google.com/github/woctezuma/Wordle-Bot/blob/colab/wordle-bot.ipynb>
+[colab-badge]: <https://colab.research.google.com/assets/colab-badge.svg>
 
 [youtube-video]: <https://www.youtube.com/watch?v=v68zYyaEmEA>
 [youtube-supplementary-code]: <https://github.com/3b1b/videos/tree/master/_2022/wordle>
