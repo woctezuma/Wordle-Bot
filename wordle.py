@@ -1,98 +1,20 @@
 #!/usr/bin/python
 import itertools
 import os
-from collections import Counter, defaultdict
+from collections import defaultdict
 
-from scipy.stats import entropy
 from tqdm import tqdm
 
 from src.chunk_utils import chunks, get_num_chunks, get_pattern
-from src.disk_utils import get_pattern_dict_fname, load_pattern_dict, save_pattern_dict
+from src.disk_utils import get_pattern_dict_fname, save_pattern_dict
+from src.entropy_utils import calculate_entropies_in_chunks
+from src.pattern_utils import calculate_pattern, generate_pattern_dict
 
 N_GUESSES = 10
 DATA_FOLDER = "data/"
 DICT_FILE_ALL = f"{DATA_FOLDER}dungleon_guesses.txt"
 DICT_FILE = f"{DATA_FOLDER}dungleon_solutions.txt"
 SAVE_TIME = False
-
-
-def calculate_pattern(guess, true):
-    """Generate a pattern list that Wordle would return if you guessed
-    `guess` and the true word is `true`
-    Thanks to MarkCBell, Jeroen van der Hooft and gbotev1
-    >>> calculate_pattern('weary', 'crane')
-    (0, 1, 2, 1, 0)
-    >>> calculate_pattern('meets', 'weary')
-    (0, 2, 0, 0, 0)
-    >>> calculate_pattern('rower', 'goner')
-    (0, 2, 0, 2, 2)
-    """
-    wrong = [i for i, v in enumerate(guess) if v != true[i]]
-    counts = Counter(true[i] for i in wrong)
-    pattern = [2] * 5
-    for i in wrong:
-        letter = guess[i]
-        if counts[letter] > 0:
-            pattern[i] = 1
-            counts[letter] -= 1
-        else:
-            pattern[i] = 0
-    return tuple(pattern)
-
-
-def generate_pattern_dict(dictionary):
-    """For each word and possible information returned, store a list
-    of candidate words
-    >>> pattern_dict = generate_pattern_dict(['weary', 'bears', 'crane'])
-    >>> pattern_dict['crane'][(2, 2, 2, 2, 2)]
-    {'crane'}
-    >>> sorted(pattern_dict['crane'][(0, 1, 2, 0, 1)])
-    ['bears', 'weary']
-    """
-    pattern_dict = defaultdict(lambda: defaultdict(set))
-    for word in tqdm(dictionary):
-        for word2 in dictionary:
-            pattern = calculate_pattern(word, word2)
-            pattern_dict[word][pattern].add(word2)
-    return dict(pattern_dict)
-
-
-def calculate_entropies(words, possible_words, pattern_dict, all_patterns):
-    """Calculate the entropy for every word in `words`, taking into account
-    the remaining `possible_words`"""
-    entropies = {}
-    for word in words:
-        counts = []
-        for pattern in all_patterns:
-            matches = pattern_dict[word][pattern]
-            matches = matches.intersection(possible_words)
-            counts.append(len(matches))
-        entropies[word] = entropy(counts)
-    return entropies
-
-
-def calculate_entropies_in_chunks(
-    all_words,
-    all_patterns,
-    num_chunks,
-    filter_candidates=False,
-):
-    entropies = {}
-    for chunk_no in range(1, num_chunks + 1):
-        pattern_dict = load_pattern_dict(chunk_no)
-
-        candidates = list(pattern_dict.keys())
-        if filter_candidates:
-            candidates = list(set(candidates).intersection(all_words))
-        chunk_entropies = calculate_entropies(
-            candidates,
-            all_words,
-            pattern_dict,
-            all_patterns,
-        )
-        entropies.update(chunk_entropies)
-
-    return entropies
 
 
 def main():
