@@ -27,8 +27,6 @@ def main():
     # Load 2315 words for solutions
     dictionary = load_word_dictionary(DICT_FILE)
 
-    print(f"Loaded dictionary with {len(all_dictionary)} words...")
-
     num_chunks = get_num_chunks(all_dictionary)
     for chunk_no, dictionary_chunk in enumerate(chunks(all_dictionary), start=1):
         fname = get_pattern_dict_fname(chunk_no)

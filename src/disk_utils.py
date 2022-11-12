@@ -23,12 +23,15 @@ def save_pattern_dict(pattern_dict, chunk_no=None):
         pickle.dump(pattern_dict, file)
 
 
-def load_word_dictionary(fname):
+def load_word_dictionary(fname, verbose=True):
     with open(fname, encoding="utf8") as ifp:
         dictionary = list(map(lambda x: x.strip(), ifp.readlines()))
     if not is_valid_dictionary(dictionary):
         print("Dictionary contains words of different length.")
         raise AssertionError()
+
+    if verbose:
+        print(f"Loaded dictionary {fname} with {len(dictionary)} words...")
 
     return dictionary
 
