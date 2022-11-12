@@ -27,8 +27,6 @@ def main():
     # Load 2315 words for solutions
     dictionary = load_word_dictionary(DICT_FILE)
 
-    error_msg = "Dictionary contains different length words."
-    assert len({len(x) for x in all_dictionary}) == 1, error_msg
     print(f"Loaded dictionary with {len(all_dictionary)} words...")
 
     num_chunks = get_num_chunks(all_dictionary)

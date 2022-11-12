@@ -26,4 +26,13 @@ def save_pattern_dict(pattern_dict, chunk_no=None):
 def load_word_dictionary(fname):
     with open(fname, encoding="utf8") as ifp:
         dictionary = list(map(lambda x: x.strip(), ifp.readlines()))
+    if not is_valid_dictionary(dictionary):
+        print("Dictionary contains words of different length.")
+        raise AssertionError()
+
     return dictionary
+
+
+def is_valid_dictionary(dictionary):
+    num_lengths = len({len(x) for x in dictionary})
+    return bool(num_lengths == 1)
