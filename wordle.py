@@ -15,7 +15,7 @@ from src.utils import update_possible_words
 N_GUESSES = 6
 FIRST_GUESS = "tares"
 DATA_FOLDER = "data/"
-GAME_FOLDER = "dungleon/"
+GAME_FOLDER = "wordle/"
 DICT_FILE_ALL = f"{DATA_FOLDER}{GAME_FOLDER}guesses.txt"
 DICT_FILE = f"{DATA_FOLDER}{GAME_FOLDER}solutions.txt"
 
