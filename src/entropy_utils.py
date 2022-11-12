@@ -1,15 +1,19 @@
 from scipy.stats import entropy
 
 from src.disk_utils import load_pattern_dict
+from src.utils import get_all_patterns
 
 
 def calculate_entropies(words, possible_words, pattern_dict):
     """Calculate the entropy for every word in `words`, taking into account
     the remaining `possible_words`"""
+    word_len = len(words[0])  # 5-letters
+    all_patterns = get_all_patterns(word_len)
     entropies = {}
     for word in words:
         counts = []
-        for matches in pattern_dict[word].values():
+        for pattern in all_patterns:
+            matches = pattern_dict[word][pattern]
             num_matches = len(matches.intersection(possible_words))
             counts.append(num_matches)
         entropies[word] = entropy(counts)
