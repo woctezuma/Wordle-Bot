@@ -12,7 +12,9 @@ def get_pattern_dict_fname(chunk_no=None):
 def load_pattern_dict(chunk_no=None):
     """Load the cache."""
     fname = get_pattern_dict_fname(chunk_no)
-    return pickle.load(open(fname, "rb"))
+    with open(fname, "rb") as file:
+        pattern_dict = pickle.load(file)
+    return pattern_dict
 
 
 def save_pattern_dict(pattern_dict, chunk_no=None):
