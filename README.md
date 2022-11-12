@@ -4,8 +4,8 @@ This repository contains Python code to solve Wordle puzzles by maximizing entro
 
 ## Requirements
 
--   Install the latest version of [Python 3.X][python-download-url].
--   Install the required packages:
+- Install the latest version of [Python 3.X][python-download-url].
+- Install the required packages:
 
 ```bash
 pip install -r requirements.txt
