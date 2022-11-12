@@ -3,12 +3,12 @@ from src.disk_utils import load_pattern_dict
 CHUNK_SIZE = 5000
 
 
-def chunks(lst, n=CHUNK_SIZE):
+def chunks(lst, num=CHUNK_SIZE):
     """Yield successive n-sized chunks from lst.
     Reference: https://stackoverflow.com/a/312464/376454
     """
-    for i in range(0, len(lst), n):
-        yield lst[i : i + n]
+    for i in range(0, len(lst), num):
+        yield lst[i : i + num]
 
 
 def get_num_chunks(lst):
