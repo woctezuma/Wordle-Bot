@@ -1,5 +1,4 @@
 #!/usr/bin/python
-import itertools
 import os
 from collections import defaultdict
 
@@ -30,10 +29,6 @@ def main():
     error_msg = "Dictionary contains different length words."
     assert len({len(x) for x in all_dictionary}) == 1, error_msg
     print(f"Loaded dictionary with {len(all_dictionary)} words...")
-    word_len = len(all_dictionary[0])  # 5-letters
-
-    # Generate the possible patterns of information we can get
-    all_patterns = list(itertools.product([0, 1, 2], repeat=word_len))
 
     num_chunks = get_num_chunks(all_dictionary)
     for chunk_no, dictionary_chunk in enumerate(chunks(all_dictionary), start=1):
@@ -63,7 +58,6 @@ def main():
         for n_round in range(init_round, N_GUESSES):
             entropies = calculate_entropies_in_chunks(
                 all_words,
-                all_patterns,
                 num_chunks,
                 filter_candidates=True,
             )
@@ -71,7 +65,6 @@ def main():
             if max(entropies.values()) < 0.1:
                 entropies = calculate_entropies_in_chunks(
                     all_words,
-                    all_patterns,
                     num_chunks,
                     filter_candidates=False,
                 )
