@@ -13,6 +13,7 @@ from src.pattern_utils import generate_pattern_dict
 from src.utils import update_possible_words
 
 N_GUESSES = 6
+FIRST_GUESS = "tares"
 DATA_FOLDER = "data/"
 GAME_FOLDER = "dungleon/"
 DICT_FILE_ALL = f"{DATA_FOLDER}{GAME_FOLDER}guesses.txt"
@@ -36,7 +37,7 @@ def main():
             save_pattern_dict(pattern_dict, chunk_no)
 
     # Simulate games
-    precomputed_first_guess = "tares"
+    precomputed_first_guess = FIRST_GUESS
 
     for word_to_guess in tqdm(dictionary):
 
