@@ -2,7 +2,7 @@ from tqdm import tqdm
 
 from src.cache_utils import pre_compute_patterns
 from src.disk_utils import load_word_dictionary
-from src.entropy_utils import calculate_entropies_in_chunks
+from src.entropy_utils import make_a_guess
 from src.utils import update_possible_words
 
 N_GUESSES = 6
@@ -41,13 +41,10 @@ def main():
             init_round = 0
 
         for n_round in range(init_round, N_GUESSES):
-            entropies = calculate_entropies_in_chunks(
+            guess_word = make_a_guess(
                 all_words,
                 num_chunks,
             )
-
-            # Guess the candidate with the highest entropy
-            guess_word = max(entropies.items(), key=lambda x: x[1])[0]
 
             if guess_word == word_to_guess:
                 print(f"WIN IN {n_round + 1} GUESSES!\n\n\n")
