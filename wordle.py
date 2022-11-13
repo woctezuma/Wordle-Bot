@@ -1,15 +1,8 @@
-import os
-
 from tqdm import tqdm
 
-from src.chunk_utils import chunks, get_num_chunks
-from src.disk_utils import (
-    get_pattern_dict_fname,
-    load_word_dictionary,
-    save_pattern_dict,
-)
+from src.cache_utils import pre_compute_patterns
+from src.disk_utils import load_word_dictionary
 from src.entropy_utils import calculate_entropies_in_chunks
-from src.pattern_utils import generate_pattern_dict
 from src.utils import update_possible_words
 
 N_GUESSES = 6
@@ -27,14 +20,7 @@ def main():
     # Load 2315 words for solutions
     dictionary = load_word_dictionary(DICT_FILE)
 
-    num_chunks = get_num_chunks(all_dictionary)
-    for chunk_no, dictionary_chunk in enumerate(chunks(all_dictionary), start=1):
-        fname = get_pattern_dict_fname(chunk_no)
-        print(f"[{chunk_no}/{num_chunks}] Processing {fname}")
-        if not os.path.exists(fname):
-            # Calculate the pattern_dict and cache it
-            pattern_dict = generate_pattern_dict(dictionary_chunk)
-            save_pattern_dict(pattern_dict, chunk_no)
+    num_chunks = pre_compute_patterns(all_dictionary)
 
     # Simulate games
     precomputed_first_guess = FIRST_GUESS
