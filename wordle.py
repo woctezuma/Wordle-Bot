@@ -54,10 +54,11 @@ def main():
             if n_round == 0 and precomputed_first_guess is not None:
                 guess_word = precomputed_first_guess
             else:
-                guess_word = make_a_guess(
+                guess_word, max_entropy = make_a_guess(
                     all_words,
                     num_chunks,
                 )
+                print(f"Maximal entropy ({max_entropy}) reached with {guess_word}.")
                 if n_round == 0:
                     precomputed_first_guess = guess_word
 

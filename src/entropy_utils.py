@@ -49,6 +49,6 @@ def make_a_guess(
     )
 
     # Guess the candidate with the highest entropy
-    guess_word = max(entropies.items(), key=lambda x: x[1])[0]
+    guess_word, max_entropy = max(entropies.items(), key=lambda x: x[1])
 
-    return guess_word
+    return guess_word, max_entropy
