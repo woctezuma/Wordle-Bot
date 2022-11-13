@@ -3,6 +3,8 @@ from scipy.stats import entropy
 from src.chunk_utils import chunks
 from src.disk_utils import load_pattern_dict
 
+ENTROPY_CHUNK_SIZE = 25000
+
 
 def calculate_entropies(words, possible_words, pattern_dict):
     """Calculate the entropy for every word in `words`, taking into account
@@ -68,7 +70,7 @@ def divide_and_conquer(
     guess_word = None
     max_entropy = None
 
-    for word_subset in chunks(list(words)):
+    for word_subset in chunks(list(words), length=ENTROPY_CHUNK_SIZE):
 
         subset_guess_word, subset_max_entropy = make_a_guess(
             word_subset,
