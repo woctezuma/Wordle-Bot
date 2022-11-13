@@ -54,7 +54,7 @@ def make_a_guess(
     guess_word, max_entropy = max(entropies.items(), key=lambda x: x[1])
 
     if verbose:
-        print(f"Maximal entropy ({max_entropy}) reached with {guess_word}.")
+        print(f"Maximal entropy ({max_entropy:.2f}) reached with {guess_word}.")
 
     return guess_word, max_entropy
 
@@ -82,6 +82,6 @@ def divide_and_conquer(
             max_entropy = subset_max_entropy
 
     if verbose:
-        print(f"Maximal entropy ({max_entropy}) reached with {guess_word}.")
+        print(f"Maximal entropy ({max_entropy:.2f}) reached with {guess_word}.")
 
     return guess_word, max_entropy
