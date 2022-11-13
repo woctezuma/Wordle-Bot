@@ -37,6 +37,8 @@ def main():
                     all_words,
                     num_chunks,
                 )
+                if n_round == 0:
+                    precomputed_first_guess = guess_word
 
             if guess_word == word_to_guess:
                 print(f"WIN IN {n_round + 1} GUESSES!\n\n\n")
