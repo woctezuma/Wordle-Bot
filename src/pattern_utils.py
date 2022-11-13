@@ -27,7 +27,7 @@ def calculate_pattern(guess, true):
     return tuple(pattern)
 
 
-def generate_pattern_dict(dictionary):
+def generate_pattern_dict(dictionary, all_words=None):
     """For each word and possible information returned, store a list
     of candidate words
     >>> pattern_dict = generate_pattern_dict(['weary', 'bears', 'crane'])
@@ -36,9 +36,11 @@ def generate_pattern_dict(dictionary):
     >>> sorted(pattern_dict['crane'][(0, 1, 2, 0, 1)])
     ['bears', 'weary']
     """
+    if all_words is None:
+        all_words = set(dictionary)
     pattern_dict = defaultdict(lambda: defaultdict(set))
     for word in tqdm(dictionary):
-        for word2 in dictionary:
+        for word2 in all_words:
             pattern = calculate_pattern(word, word2)
             pattern_dict[word][pattern].add(word2)
     return dict(pattern_dict)
