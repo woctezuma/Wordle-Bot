@@ -46,7 +46,7 @@ def main():
                 num_chunks,
             )
 
-            # Guess the candiate with highest entropy
+            # Guess the candidate with the highest entropy
             guess_word = max(entropies.items(), key=lambda x: x[1])[0]
 
             if guess_word == word_to_guess:
