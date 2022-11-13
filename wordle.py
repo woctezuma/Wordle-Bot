@@ -63,7 +63,7 @@ def main():
                     precomputed_first_guess = guess_word
 
             if guess_word == word_to_guess:
-                print(f"WIN IN {n_round + 1} GUESSES!\n\n\n")
+                print(f"WIN IN {n_round + 1} GUESSES!")
                 break
 
             # Filter our list of remaining possible words

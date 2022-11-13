@@ -14,9 +14,7 @@ def update_possible_words(
     info = calculate_pattern(guess_word, word_to_guess)
 
     if verbose:
-        # Print round information
-        print("Guessing:     ", guess_word)
-        print("Info:         ", info)
+        print(f"Guessing word {guess_word} with feedback pattern {info}")
 
     # Filter our list of remaining possible words
     words = get_pattern(all_dictionary, guess_word)[info]
