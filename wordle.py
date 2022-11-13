@@ -40,6 +40,7 @@ def main():
     all_dictionary = load_word_dictionary(fname_all_words)
 
     num_chunks = pre_compute_patterns(all_dictionary)
+    all_candidate_words = set(all_dictionary)
 
     # Load 2315 words for solutions
     dictionary = load_word_dictionary(fname_solutions)
@@ -49,14 +50,14 @@ def main():
 
     for word_to_guess in tqdm(dictionary):
 
-        remaining_candidate_words = set(all_dictionary)
+        remaining_candidate_words = all_candidate_words
 
         for n_round in range(N_GUESSES):
             if n_round == 0 and precomputed_first_guess is not None:
                 guess_word = precomputed_first_guess
             else:
                 guess_word, max_entropy = make_a_guess(
-                    set(all_dictionary),
+                    all_candidate_words,
                     num_chunks,
                 )
                 if max_entropy < ENTROPY_THRESHOLD:
