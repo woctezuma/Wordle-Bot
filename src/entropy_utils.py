@@ -17,6 +17,7 @@ def calculate_entropies(words, possible_words, pattern_dict):
 
 
 def calculate_entropies_in_chunks(
+    words,
     possible_words,
     num_chunks,
 ):
@@ -24,7 +25,7 @@ def calculate_entropies_in_chunks(
     for chunk_no in range(1, num_chunks + 1):
         pattern_dict = load_pattern_dict(chunk_no)
 
-        candidates = set(pattern_dict)
+        candidates = set(pattern_dict).intersection(words)
         chunk_entropies = calculate_entropies(
             candidates,
             possible_words,
@@ -36,11 +37,13 @@ def calculate_entropies_in_chunks(
 
 
 def make_a_guess(
+    words,
     possible_words,
     num_chunks,
     verbose=True,
 ):
     entropies = calculate_entropies_in_chunks(
+        words,
         possible_words,
         num_chunks,
     )

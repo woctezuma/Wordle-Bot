@@ -58,10 +58,12 @@ def main():
             else:
                 guess_word, max_entropy = make_a_guess(
                     all_candidate_words,
+                    remaining_candidate_words,
                     num_chunks,
                 )
                 if max_entropy < ENTROPY_THRESHOLD:
                     guess_word, max_entropy = make_a_guess(
+                        remaining_candidate_words,
                         remaining_candidate_words,
                         num_chunks,
                     )
