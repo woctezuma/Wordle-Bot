@@ -8,6 +8,7 @@ from src.entropy_utils import make_a_guess
 from src.utils import update_possible_words
 
 N_GUESSES = 6
+ENTROPY_THRESHOLD = 0.1
 DATA_FOLDER = "data/"
 GAME_NAMES = ["wordle", "dungleon"]
 DICT_FILE_ALL = "guesses.txt"
@@ -55,9 +56,14 @@ def main():
                 guess_word = precomputed_first_guess
             else:
                 guess_word, max_entropy = make_a_guess(
-                    all_words,
+                    set(all_dictionary),
                     num_chunks,
                 )
+                if max_entropy < ENTROPY_THRESHOLD:
+                    guess_word, max_entropy = make_a_guess(
+                        all_words,
+                        num_chunks,
+                    )
                 print(f"Maximal entropy ({max_entropy}) reached with {guess_word}.")
                 if n_round == 0:
                     precomputed_first_guess = guess_word
