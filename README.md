@@ -13,20 +13,27 @@ pip install -r requirements.txt
 
 ## Usage
 
-Choose the game by editing `GAME_FOLDER` in `wordle.py`:
-- either `wordle/`,
-- or `dungleon/`.
-
-Specify a pre-computed first guess by editing `FIRST_GUESS` in `wordle.py`:
-- choose `None` to re-compute the first guess,
-- or directly use `"tares"` for Wordle,
-- and `"EFCBS"` (🟡🐸💰🦇💀) for Dungleon.
-
-Finally, run:
+To compute the optimal first guess, choose the game with `--game-name`:
 
 ```bash
-python wordle.py
+python wordle.py --game-name wordle
 ```
+
+```bash
+python wordle.py --game-name dungleon
+```
+
+A pre-computed first guess can be specified with `--first-guess`:
+
+```bash
+python wordle.py --game-name wordle --first-guess tares
+```
+
+```bash
+python wordle.py --game-name dungleon --first-guess EFCBS
+```
+
+NB: the `"EFCBS"` guess in Dungleon corresponds to 🟡🐸💰🦇💀.
 
 Alternatively, run [`wordle-bot.ipynb`][colab-notebook]
 [![Open In Colab][colab-badge]][colab-notebook]
