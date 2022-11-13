@@ -32,6 +32,7 @@ def calculate_entropies_in_chunks(
             possible_words,
             pattern_dict,
         )
+        del pattern_dict
         entropies.update(chunk_entropies)
 
     return entropies
