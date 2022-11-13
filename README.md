@@ -26,14 +26,14 @@ python wordle.py --game-name dungleon
 A pre-computed first guess can be specified with `--first-guess`:
 
 ```bash
-python wordle.py --game-name wordle --first-guess tares
+python wordle.py --game-name wordle --first-guess soare
 ```
 
 ```bash
-python wordle.py --game-name dungleon --first-guess EFCBS
+python wordle.py --game-name dungleon --first-guess ZOCFS
 ```
 
-NB: the `"EFCBS"` guess in Dungleon corresponds to 🟡🐸💰🦇💀.
+NB: the `"ZOCFS"` guess in Dungleon corresponds to 🧟👹💰🐸💀.
 
 Alternatively, run [`wordle-bot.ipynb`][colab-notebook]
 [![Open In Colab][colab-badge]][colab-notebook]
