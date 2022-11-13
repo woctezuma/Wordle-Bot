@@ -44,6 +44,8 @@ def main():
     # Load 2315 words for solutions
     dictionary = load_word_dictionary(fname_solutions)
 
+    all_solutions = set(dictionary)
+
     # Simulate games
     precomputed_first_guess = args.first_guess
 
@@ -55,9 +57,13 @@ def main():
             if n_round == 0 and precomputed_first_guess is not None:
                 guess_word = precomputed_first_guess
             else:
+                remaining_solutions = remaining_candidate_words.intersection(
+                    all_solutions,
+                )
+
                 guess_word, _ = make_a_guess(
                     remaining_candidate_words,
-                    remaining_candidate_words,
+                    remaining_solutions,
                     num_chunks,
                 )
                 if n_round == 0:
