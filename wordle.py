@@ -29,22 +29,14 @@ def main():
 
         all_words = set(all_dictionary)
 
-        if precomputed_first_guess is not None:
-            all_words = update_possible_words(
-                all_words,
-                all_dictionary,
-                precomputed_first_guess,
-                word_to_guess,
-            )
-            init_round = 1
-        else:
-            init_round = 0
-
-        for n_round in range(init_round, N_GUESSES):
-            guess_word = make_a_guess(
-                all_words,
-                num_chunks,
-            )
+        for n_round in range(N_GUESSES):
+            if n_round == 0 and precomputed_first_guess is not None:
+                guess_word = precomputed_first_guess
+            else:
+                guess_word = make_a_guess(
+                    all_words,
+                    num_chunks,
+                )
 
             if guess_word == word_to_guess:
                 print(f"WIN IN {n_round + 1} GUESSES!\n\n\n")
