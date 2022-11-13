@@ -17,10 +17,10 @@ def main():
     # load all 5-letter-words for making patterns
     all_dictionary = load_word_dictionary(DICT_FILE_ALL)
 
+    num_chunks = pre_compute_patterns(all_dictionary)
+
     # Load 2315 words for solutions
     dictionary = load_word_dictionary(DICT_FILE)
-
-    num_chunks = pre_compute_patterns(all_dictionary)
 
     # Simulate games
     precomputed_first_guess = FIRST_GUESS
