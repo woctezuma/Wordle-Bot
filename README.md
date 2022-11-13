@@ -19,7 +19,8 @@ Choose the game by editing `GAME_FOLDER` in `wordle.py`:
 
 Specify a pre-computed first guess by editing `FIRST_GUESS` in `wordle.py`:
 - choose `None` to re-compute the first guess,
-- or directly use `"tares"` for Wordle.
+- or directly use `"tares"` for Wordle,
+- and `"EFCBS"` (🟡🐸💰🦇💀) for Dungleon.
 
 Finally, run:
 
