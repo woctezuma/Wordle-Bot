@@ -64,7 +64,6 @@ def main():
                         all_words,
                         num_chunks,
                     )
-                print(f"Maximal entropy ({max_entropy}) reached with {guess_word}.")
                 if n_round == 0:
                     precomputed_first_guess = guess_word
 

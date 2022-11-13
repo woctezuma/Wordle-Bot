@@ -42,6 +42,7 @@ def calculate_entropies_in_chunks(
 def make_a_guess(
     all_words,
     num_chunks,
+    verbose=True,
 ):
     entropies = calculate_entropies_in_chunks(
         all_words,
@@ -50,5 +51,8 @@ def make_a_guess(
 
     # Guess the candidate with the highest entropy
     guess_word, max_entropy = max(entropies.items(), key=lambda x: x[1])
+
+    if verbose:
+        print(f"Maximal entropy ({max_entropy}) reached with {guess_word}.")
 
     return guess_word, max_entropy
