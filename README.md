@@ -38,6 +38,25 @@ NB: the `"ZOCFS"` guess in Dungleon corresponds to 🧟👹💰🐸💀.
 Alternatively, run [`wordle-bot.ipynb`][colab-notebook]
 [![Open In Colab][colab-badge]][colab-notebook]
 
+## Results
+
+Using 3Blue1Brown's code with `priors=get_true_wordle_prior()`, suggested first guesses for Dungleon are:
+
+- `ZOCFS`🧟👹💰🐸💀 (`purely_maximize_information`)
+- `CEBSF` 💰🟡🦇💀🐸 (`optimize_for_uniform_distribution`)
+- `ZOCFS`🧟👹💰🐸💀 (`look_two_ahead=False`)
+- `ZBCFS` 🧟🦇💰🐸💀 (`look_two_ahead=True`)
+
+My adaptation of GillesVandewiele's code would suggest:
+
+- `VZCFS`👨‍🌾🧟💰🐸💀 (guesses constrained to the set of solutions)
+- `ZOCFS`🧟👹💰🐸💀 (unconstrained guesses)
+
+For reference, TylerGlaiel's code would suggest:
+
+- `MGCFS`🧙‍♀️👺💰🐸💀 (guesses constrained to the set of solutions)
+- `ZOCFS`🧟👹💰🐸💀 (unconstrained guesses)
+
 ## References
 
 - 3Blue1Brown, [*Solving Wordle using information theory*][youtube-video], posted on Youtube on February 6, 2022,
