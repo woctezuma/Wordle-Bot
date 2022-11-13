@@ -4,7 +4,7 @@ from tqdm import tqdm
 
 from src.cache_utils import pre_compute_patterns
 from src.disk_utils import load_word_dictionary
-from src.entropy_utils import make_a_guess
+from src.entropy_utils import divide_and_conquer
 from src.utils import update_possible_words
 
 N_GUESSES = 6
@@ -61,7 +61,7 @@ def main():
                     all_solutions,
                 )
 
-                guess_word, _ = make_a_guess(
+                guess_word, _ = divide_and_conquer(
                     remaining_candidate_words,
                     remaining_solutions,
                     num_chunks,

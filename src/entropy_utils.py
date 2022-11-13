@@ -1,5 +1,6 @@
 from scipy.stats import entropy
 
+from src.chunk_utils import chunks
 from src.disk_utils import load_pattern_dict
 
 
@@ -50,6 +51,34 @@ def make_a_guess(
 
     # Guess the candidate with the highest entropy
     guess_word, max_entropy = max(entropies.items(), key=lambda x: x[1])
+
+    if verbose:
+        print(f"Maximal entropy ({max_entropy}) reached with {guess_word}.")
+
+    return guess_word, max_entropy
+
+
+def divide_and_conquer(
+    words,
+    possible_words,
+    num_chunks,
+    verbose=True,
+):
+    guess_word = None
+    max_entropy = None
+
+    for word_subset in chunks(list(words)):
+
+        subset_guess_word, subset_max_entropy = make_a_guess(
+            word_subset,
+            possible_words,
+            num_chunks,
+            verbose=False,
+        )
+
+        if max_entropy is None or max_entropy < subset_max_entropy:
+            guess_word = subset_guess_word
+            max_entropy = subset_max_entropy
 
     if verbose:
         print(f"Maximal entropy ({max_entropy}) reached with {guess_word}.")
