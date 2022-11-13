@@ -49,7 +49,7 @@ def main():
 
     for word_to_guess in tqdm(dictionary):
 
-        all_words = set(all_dictionary)
+        remaining_candidate_words = set(all_dictionary)
 
         for n_round in range(N_GUESSES):
             if n_round == 0 and precomputed_first_guess is not None:
@@ -61,7 +61,7 @@ def main():
                 )
                 if max_entropy < ENTROPY_THRESHOLD:
                     guess_word, max_entropy = make_a_guess(
-                        all_words,
+                        remaining_candidate_words,
                         num_chunks,
                     )
                 if n_round == 0:
@@ -72,8 +72,8 @@ def main():
                 break
 
             # Filter our list of remaining possible words
-            all_words = update_possible_words(
-                all_words,
+            remaining_candidate_words = update_possible_words(
+                remaining_candidate_words,
                 all_dictionary,
                 guess_word,
                 word_to_guess,
