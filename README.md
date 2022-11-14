@@ -2,6 +2,8 @@
 
 This repository contains Python code to solve Wordle puzzles by maximizing entropy.
 
+> **Disclaimer**: I recommend to use the code at [`woctezuma/3b1b-wordle-solver`][wordle-3b1b-solver], which is much faster!
+
 ## Requirements
 
 - Install the latest version of [Python 3.X][python-download-url].
@@ -76,6 +78,7 @@ For reference, TylerGlaiel's code would suggest:
 
 [youtube-video]: <https://www.youtube.com/watch?v=v68zYyaEmEA>
 [youtube-supplementary-code]: <https://github.com/3b1b/videos/tree/master/_2022/wordle>
+[wordle-3b1b-solver]: <https://github.com/woctezuma/3b1b-wordle-solver>
 [wordle-bot-python]: <https://github.com/GillesVandewiele/Wordle-Bot>
 [wordle-bot-cpp]: <https://github.com/TylerGlaiel/wordlebot>
 [dungleon-bot]: <https://github.com/woctezuma/dungleon-bot>
