@@ -49,6 +49,7 @@ Using 3Blue1Brown's code with `priors=get_true_wordle_prior()`, suggested first 
 - `CEBSF` 💰🟡🦇💀🐸 (`optimize_for_uniform_distribution`)
 - `ZOCFS`🧟👹💰🐸💀 (`look_two_ahead=False`)
 - `ZBCFS` 🧟🦇💰🐸💀 (`look_two_ahead=True`)
+- `AWOCS`🏹🤺👹💰💀 (if only seen solutions are considered)
 
 My adaptation of GillesVandewiele's code would suggest:
 
