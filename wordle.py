@@ -50,7 +50,6 @@ def main():
     precomputed_first_guess = args.first_guess
 
     for word_to_guess in tqdm(dictionary):
-
         remaining_candidate_words = all_candidate_words
 
         for n_round in range(N_GUESSES):

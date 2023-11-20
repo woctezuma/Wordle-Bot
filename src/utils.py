@@ -18,9 +18,7 @@ def update_possible_words(
 
     # Filter our list of remaining possible words
     words = get_pattern(all_dictionary, guess_word)[info]
-    all_words = all_words.intersection(words)
-
-    return all_words
+    return all_words.intersection(words)
 
 
 def draw_sample(iterable):
@@ -30,6 +28,4 @@ def draw_sample(iterable):
 
 def get_all_patterns(word_len):
     # Generate the possible patterns of information we can get
-    all_patterns = list(itertools.product([0, 1, 2], repeat=word_len))
-
-    return all_patterns
+    return list(itertools.product([0, 1, 2], repeat=word_len))

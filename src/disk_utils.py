@@ -2,10 +2,7 @@ import pickle
 
 
 def get_pattern_dict_fname(chunk_no=None):
-    if chunk_no is None:
-        suffix = ""
-    else:
-        suffix = f"_{chunk_no}"
+    suffix = f"_{chunk_no}" if chunk_no else ""
     return f"pattern_dict{suffix}.p"
 
 
@@ -13,8 +10,7 @@ def load_pattern_dict(chunk_no=None):
     """Load the cache."""
     fname = get_pattern_dict_fname(chunk_no)
     with open(fname, "rb") as file:
-        pattern_dict = pickle.load(file)
-    return pattern_dict
+        return pickle.load(file)
 
 
 def save_pattern_dict(pattern_dict, chunk_no=None):
@@ -25,10 +21,10 @@ def save_pattern_dict(pattern_dict, chunk_no=None):
 
 def load_word_dictionary(fname, verbose=True):
     with open(fname, encoding="utf8") as ifp:
-        dictionary = list(map(lambda x: x.strip(), ifp.readlines()))
+        dictionary = [x.strip() for x in ifp.readlines()]
     if not is_valid_dictionary(dictionary):
         print("Dictionary contains words of different length.")
-        raise AssertionError()
+        raise AssertionError
 
     if verbose:
         print(f"Loaded dictionary {fname} with {len(dictionary)} words...")

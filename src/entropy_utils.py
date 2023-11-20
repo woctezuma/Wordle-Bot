@@ -71,7 +71,6 @@ def divide_and_conquer(
     max_entropy = None
 
     for word_subset in chunks(list(words), length=ENTROPY_CHUNK_SIZE):
-
         subset_guess_word, subset_max_entropy = make_a_guess(
             word_subset,
             possible_words,
