@@ -1,44 +1,38 @@
 files: \.(py|yaml|txt|md)$
+default_stages: [commit, manual]
 repos:
 
--   repo: https://github.com/pycqa/isort
-    rev: 5.10.1
+-   repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.6
     hooks:
-    - id: isort
-      args: [--profile=black, --filter-files]
+    - id: ruff
+      args: [
+      --fix,
+      --unsafe-fixes,
+      --target-version, "py312",
+      --select, "ALL",
+      --ignore, "ANN,D,FBT,S301,T20"
+      ]
+    - id: ruff-format
 
--   repo: https://github.com/psf/black
-    rev: 22.10.0
+-   repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.7.0
     hooks:
-    - id: black
+    - id: mypy
+      additional_dependencies: [types-requests]
+      stages: [manual]
 
--   repo: https://github.com/asottile/add-trailing-comma
-    rev: v2.3.0
+-   repo: https://github.com/dosisod/refurb
+    rev: v1.24.0
     hooks:
-    -   id: add-trailing-comma # redundant with black
-
--   repo: https://github.com/pycqa/autoflake
-    rev: v1.7.7
-    hooks:
-    - id: autoflake
+    - id: refurb
+      args: [--python-version, "3.12"]
+      stages: [manual]
 
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
+    rev: v4.5.0
     hooks:
     - id: requirements-txt-fixer
     - id: trailing-whitespace
       args: [--markdown-linebreak-ext=md]
     - id: end-of-file-fixer
-
--   repo: https://github.com/pycqa/flake8
-    rev: 5.0.4
-    hooks:
-    - id: flake8
-      args: [--max-line-length=120, --extend-ignore, "E203,W503,E501", --extend-select, "B9", --min-python-version=3.11]
-      additional_dependencies: [flake8-typing-imports, flake8-bugbear]
-
--   repo: https://github.com/pycqa/pylint
-    rev: v2.15.5
-    hooks:
-    - id: pylint
-      args: [--max-line-length=120, -sn, --disable, "E0401,C0114,C0116,R0914"]
