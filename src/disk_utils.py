@@ -1,4 +1,5 @@
 import pickle
+from pathlib import Path
 
 
 def get_pattern_dict_fname(chunk_no=None):
@@ -9,18 +10,18 @@ def get_pattern_dict_fname(chunk_no=None):
 def load_pattern_dict(chunk_no=None):
     """Load the cache."""
     fname = get_pattern_dict_fname(chunk_no)
-    with open(fname, "rb") as file:
+    with Path(fname).open("rb") as file:
         return pickle.load(file)
 
 
 def save_pattern_dict(pattern_dict, chunk_no=None):
     fname = get_pattern_dict_fname(chunk_no)
-    with open(fname, "wb+") as file:
+    with Path(fname).open("wb+") as file:
         pickle.dump(pattern_dict, file)
 
 
 def load_word_dictionary(fname, verbose=True):
-    with open(fname, encoding="utf8") as ifp:
+    with Path(fname).open(encoding="utf8") as ifp:
         dictionary = [x.strip() for x in ifp.readlines()]
     if not is_valid_dictionary(dictionary):
         print("Dictionary contains words of different length.")
