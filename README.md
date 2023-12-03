@@ -1,4 +1,4 @@
-> **Note**
+> [!Note]
 > I recommend to use the code at [`woctezuma/3b1b-wordle-solver`][wordle-3b1b-solver], which is much faster!
 
 # Wordle Bot [![Code Quality][codacy-image]][codacy]
